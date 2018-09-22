@@ -1,2 +1,3 @@
 # Projeto2
-Segundo projeto da matéria EDA 
+
+[Link para a descrição do projeto](Projeto02.pdf)
