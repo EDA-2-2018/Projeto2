@@ -13,15 +13,40 @@ int main() {
 	vetor_treinameto(grass_treinamento, 25, 50);
 	vetor_teste(grass_treinamento, grass_teste);
 
-    printf("\nTREINAMENTO       TESTE\n\n");
+	char nome_imagem[25];
+	FILE *arquivo;
+	int maior_valor; 
 
-    for(int i=1; i<=25; i++) 
-    	// sprintf..
-    	printf("aspalt_%.2d.txt   aspalt_%.2d.txt \n", aspalt_treinamento[i], aspalt_teste[i]);
-    printf("\n");
-	
-	for(int i=1; i<=25; i++) 
-    	printf("grass_%.2d.txt   grass_%.2d.txt \n", grass_treinamento[i], grass_teste[i]);
-        
+	int *vetor_frequencia_ilbp=NULL;
+	vetor_frequencia_ilbp = (int *) calloc(512, sizeof(int));
+
+	if (vetor_frequencia_ilbp==NULL) {
+		printf("Alocacao de falhou... FIM!\n");
+		exit(1);
+	}
+
+	// lendo imagens grass
+	for(int i=1; i<=25; i++) {
+		sprintf(nome_imagem, "./grass/grass_%.2d.txt", grass_treinamento[i]);
+		arquivo = fopen(nome_imagem, "r+"); 
+		ler_imagem(arquivo, vetor_frequencia_ilbp, &maior_valor, nome_imagem);
+		// printf("ilbp = %d, %d veses\n", 255, *(vetor_frequencia_ilbp + 255));
+		fclose(arquivo);
+	}
+
+	// lendo imagens asphalt
+	for(int i=1; i<=25; i++) {
+		sprintf(nome_imagem, "./asphalt/asphalt_%.2d.txt", aspalt_treinamento[i]);
+		arquivo = fopen(nome_imagem, "r+"); 
+		ler_imagem(arquivo, vetor_frequencia_ilbp, &maior_valor, nome_imagem);
+		// printf("ilbp = %d, %d veses\n", 255, *(vetor_frequencia_ilbp + 255));
+		fclose(arquivo);
+	}
+
+	printf("\n\n\n");
+	for(int i=0; i<512; i++) 
+		printf("ilbp = %d, %d veses\n", i, *(vetor_frequencia_ilbp + i));
+
+	free(vetor_frequencia_ilbp);
     return 0;
 }
