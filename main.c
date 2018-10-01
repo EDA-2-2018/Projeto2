@@ -13,40 +13,44 @@ int main() {
 	vetor_treinameto(grass_treinamento, 25, 50);
 	vetor_teste(grass_treinamento, grass_teste);
 
-	char nome_imagem[25];
-	FILE *arquivo;
 	int maior_valor; 
+	char nome_imagem[25];	
 
-	int *vetor_frequencia_ilbp=NULL;
-	vetor_frequencia_ilbp = (int *) calloc(512, sizeof(int));
-
-	if (vetor_frequencia_ilbp==NULL) {
+	int *frequencia_grass_treinamento=NULL;
+	frequencia_grass_treinamento = (int *) calloc(512, sizeof(int));
+	if (frequencia_grass_treinamento==NULL) {
 		printf("Alocacao de falhou... FIM!\n");
 		exit(1);
 	}
-
+	
 	// lendo imagens grass
 	for(int i=1; i<=25; i++) {
 		sprintf(nome_imagem, "./grass/grass_%.2d.txt", grass_treinamento[i]);
-		arquivo = fopen(nome_imagem, "r+"); 
-		ler_imagem(arquivo, vetor_frequencia_ilbp, &maior_valor, nome_imagem);
-		// printf("ilbp = %d, %d veses\n", 255, *(vetor_frequencia_ilbp + 255));
-		fclose(arquivo);
+		FILE *arquivo = fopen(nome_imagem, "r+"); 
+		ler_imagem(arquivo, frequencia_grass_treinamento, &maior_valor, nome_imagem);		
 	}
 
+	int *frequencia_asphalt_treinamento=NULL;
+	frequencia_asphalt_treinamento = (int *) calloc(512, sizeof(int));
+	if (frequencia_asphalt_treinamento==NULL) {
+		printf("Alocacao de falhou... FIM!\n");
+		exit(1);
+	}
 	// lendo imagens asphalt
 	for(int i=1; i<=25; i++) {
 		sprintf(nome_imagem, "./asphalt/asphalt_%.2d.txt", aspalt_treinamento[i]);
-		arquivo = fopen(nome_imagem, "r+"); 
-		ler_imagem(arquivo, vetor_frequencia_ilbp, &maior_valor, nome_imagem);
-		// printf("ilbp = %d, %d veses\n", 255, *(vetor_frequencia_ilbp + 255));
-		fclose(arquivo);
+		FILE *arquivo = fopen(nome_imagem, "r+"); 
+		ler_imagem(arquivo, frequencia_asphalt_treinamento, &maior_valor, nome_imagem);
 	}
 
+//imprime 
 	printf("\n\n\n");
 	for(int i=0; i<512; i++) 
-		printf("ilbp = %d, %d veses\n", i, *(vetor_frequencia_ilbp + i));
+		printf("ilbp = %d, %d veses --- %d veses\n", i, *(frequencia_grass_treinamento + i), *(frequencia_asphalt_treinamento + i));
 
-	free(vetor_frequencia_ilbp);
+	free(frequencia_grass_treinamento);
+	free(frequencia_asphalt_treinamento);
+	 // free(frequencia_grass_teste);
+	// free(frequencia_asphalt_teste);
     return 0;
 }

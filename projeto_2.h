@@ -149,11 +149,12 @@ void ler_imagem(FILE *arquivo, int *vetor, int *maior_valor, char *nome_imagem) 
     fclose(arquivo);
 
 // aloca memoria para matriz[linhas][colunas]
-    // int x;
-    // int **matriz = (int **)malloc(linhas * sizeof(int *)); //Aloca um Vetor de Ponteiros
-    // for (x = 0; x < linhas; x++) //Percorre as linhas do Vetor de Ponteiros
-    //     matriz[x] = (int *) malloc(colunas * sizeof(int)); //Aloca um Vetor de Inteiros para cada posição do Vetor de Ponteiros.
-    int matriz[linhas][colunas];
+    int x;
+    int **matriz = (int **) malloc(linhas * sizeof(int *)); //Aloca um Vetor de Ponteiros
+    for (x = 0; x < linhas; x++) //Percorre as linhas do Vetor de Ponteiros
+        matriz[x] = (int *) malloc(colunas * sizeof(int)); //Aloca um Vetor de Inteiros para cada posição do Vetor de Ponteiros.
+    
+    // int matriz[linhas][colunas];
 
     arquivo = fopen(nome_imagem, "r+");
 
@@ -172,6 +173,7 @@ void ler_imagem(FILE *arquivo, int *vetor, int *maior_valor, char *nome_imagem) 
     }
 
     *maior_valor = maior;
+    fclose(arquivo);
 //------------------------------
     int lin=1, col=1, i, j;
     int co=1042441;
@@ -207,11 +209,9 @@ void ler_imagem(FILE *arquivo, int *vetor, int *maior_valor, char *nome_imagem) 
     
     free(freq);
 
-    // for(x=0; x<linhas; x++) //percorre o vetor para liberar a segunda dimensao
-    //     free(matriz[x]);  
-
-    // free(matriz); //libera a primeira dimensao
+    for(int x=0; x<linhas; x++) //percorre o vetor para liberar a segunda dimensao
+        free(matriz[x]);  
+    free(matriz); //libera a primeira dimensao
     
-
 }
 
