@@ -62,9 +62,9 @@ int main(){
 	num_linhas= (num_linhas-1);
 	num_colunas= (num_colunas+num_linhas)/(num_linhas);
 
-	printf("Número de linhas: %d \n", num_linhas);
-	printf("Número de colunas: %d \n", num_colunas);
-	printf("O maior número de caracteres é: %d \n", maior_num);
+	//printf("Número de linhas: %d \n", num_linhas);
+	//printf("Número de colunas: %d \n", num_colunas);
+	//printf("O maior número de caracteres é: %d \n", maior_num);
 		
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,7 @@ int main(){
 			l=*(n_img+i);
 	}
 	
-	printf("Maior valor do vetor: %d\n",l);
+	//printf("Maior valor do vetor: %d\n",l);
 
 
 	
