@@ -62,9 +62,9 @@ int main(){
 	num_linhas= (num_linhas-1);
 	num_colunas= (num_colunas+num_linhas)/(num_linhas);
 
-	//printf("Número de linhas: %d \n", num_linhas);
-	//printf("Número de colunas: %d \n", num_colunas);
-	//printf("O maior número de caracteres é: %d \n", maior_num);
+	printf("Número de linhas: %d \n", num_linhas);
+	printf("Número de colunas: %d \n", num_colunas);
+	printf("O maior número de caracteres é: %d \n", maior_num);
 		
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,7 @@ int main(){
 			l=*(n_img+i);
 	}
 	
-	//printf("Maior valor do vetor: %d\n",l);
+	printf("Maior valor do vetor: %d\n",l);
 
 
 	
@@ -192,8 +192,12 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 				
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+a+1));
+					
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -247,6 +251,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 	energia=0;
 	homogeneidade=0;
 
+	
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////Criando a matrix GLCM à esquerda com tamanho L;
 	
@@ -260,8 +265,13 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 				
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+a+1));
+						
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -299,7 +309,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_e[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_e[i][j]);
+			energia+= (mat_glcm_e[i][j]*mat_glcm_e[i][j]);
 			homogeneidade+= (mat_glcm_e[i][j])/(1+ abs(i-j));
 			
 		}
@@ -334,8 +344,13 @@ for(i=0;i<L;i++){
 				
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
+					
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -374,7 +389,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_b[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_b[i][j]);
+			energia+= (mat_glcm_b[i][j]*mat_glcm_b[i][j]);
 			homogeneidade+= (mat_glcm_b[i][j])/(1+ abs(i-j));
 			
 		}
@@ -411,7 +426,11 @@ for(i=0;i<L;i++){
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
+
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -449,7 +468,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_c[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_c[i][j]);
+			energia+= (mat_glcm_c[i][j]*mat_glcm_c[i][j]);
 			homogeneidade+= (mat_glcm_c[i][j])/(1+ abs(i-j));
 			
 		}
@@ -487,8 +506,12 @@ for(i=0;i<L;i++){
 				
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
+						
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -526,7 +549,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_ddi[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_ddi[i][j]);
+			energia+= (mat_glcm_ddi[i][j]*mat_glcm_ddi[i][j]);
 			homogeneidade+= (mat_glcm_ddi[i][j])/(1+ abs(i-j));
 			
 		}
@@ -564,8 +587,12 @@ for(i=0;i<L;i++){
 				
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
+						
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -603,7 +630,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_des[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_des[i][j]);
+			energia+= (mat_glcm_des[i][j]*mat_glcm_des[i][j]);
 			homogeneidade+= (mat_glcm_des[i][j])/(1+ abs(i-j));
 			
 		}
@@ -641,7 +668,11 @@ for(i=0;i<L;i++){
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
+
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -679,7 +710,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_dei[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_dei[i][j]);
+			energia+= (mat_glcm_dei[i][j]*mat_glcm_dei[i][j]);
 			homogeneidade+= (mat_glcm_dei[i][j])/(1+ abs(i-j));
 			
 		}
@@ -717,7 +748,12 @@ for(i=0;i<L;i++){
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
 
-						if(v_adj1==adj1 && v_adj2==adj2){
+						if(v_adj1!=adj1){
+							c_adj=0;
+						}
+
+
+						else if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -754,7 +790,7 @@ for(i=0;i<L;i++){
 	for(i=0;i<L;i++){
 		for(j=0;j<L;j++){
 			contraste+= ((i-j)*(i-j))*mat_glcm_dds[i][j];
-			energia+= (mat_glcm_d[i][j]*mat_glcm_dds[i][j]);
+			energia+= (mat_glcm_dds[i][j]*mat_glcm_dds[i][j]);
 			homogeneidade+= (mat_glcm_dds[i][j])/(1+ abs(i-j));
 			
 		}
@@ -772,8 +808,7 @@ for(i=0;i<L;i++){
 
 	contraste=0;
 	energia=0;
-	homogeneidade=0;	
-
+	homogeneidade=0;
 
 
 
