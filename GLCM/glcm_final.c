@@ -24,8 +24,8 @@ int main(){
 	char c;
 
 	FILE *fp;
-	//fp= fopen("img_teste_glcm.txt","r");
-	fp= fopen("grass_01.txt","r");
+	fp= fopen("img_teste_glcm.txt","r");
+	//fp= fopen("grass_01.txt","r");
 
 	if(!fp){
 		printf("Erro na abertura do arquivo!!!! \n");
@@ -129,7 +129,7 @@ int *inicia_vetor(FILE *fp, int tam, int maior, int *vetor){
 	int i=0,j=0,k, menor=1;
 
 	
-	fp= fopen("grass_01.txt","r");
+	fp= fopen("img_teste_glcm.txt","r");
 	
 	while(!feof(fp)){
 		fscanf(fp,"%c",&c);
@@ -193,11 +193,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+a+1));
 					
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -266,12 +262,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+a+1));
 						
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -345,12 +336,7 @@ for(i=0;i<L;i++){
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
 					
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -426,11 +412,7 @@ for(i=0;i<L;i++){
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
 
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -507,11 +489,7 @@ for(i=0;i<L;i++){
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
 						
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -588,11 +566,7 @@ for(i=0;i<L;i++){
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
 						
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -668,11 +642,7 @@ for(i=0;i<L;i++){
 						adj1= *(matriz+(g+a));
 						adj2= *(matriz+(g+b));
 
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
@@ -748,12 +718,7 @@ for(i=0;i<L;i++){
 						adj2= *(matriz+(g+a));
 						adj1= *(matriz+(g+b));
 
-						if(v_adj1!=adj1){
-							c_adj=0;
-						}
-
-
-						else if(v_adj1==adj1 && v_adj2==adj2){
+						 if(v_adj1==adj1 && v_adj2==adj2){
 							
 							c_adj+=1;
 						}
