@@ -24,7 +24,8 @@ int main(){
 	char c;
 
 	FILE *fp;
-	fp= fopen("img_teste_glcm.txt","r");
+	//fp= fopen("img_teste_glcm.txt","r");
+	fp= fopen("grass_01.txt","r");
 
 	if(!fp){
 		printf("Erro na abertura do arquivo!!!! \n");
@@ -76,7 +77,7 @@ int main(){
 	n_img= inicia_vetor(fp, (num_linhas*num_colunas), maior_num, vetor);
 	
 	for(i=0;i<(num_linhas*num_colunas);i++ ){
-		printf("numero[%d]: %d\n",i, *(n_img+i));
+//		printf("numero[%d]: %d\n",i, *(n_img+i));
 		if(*(n_img+i) >= l)
 			l=*(n_img+i);
 	}
@@ -128,7 +129,7 @@ int *inicia_vetor(FILE *fp, int tam, int maior, int *vetor){
 	int i=0,j=0,k, menor=1;
 
 	
-	fp= fopen("img_teste_glcm.txt","r");
+	fp= fopen("grass_01.txt","r");
 	
 	while(!feof(fp)){
 		fscanf(fp,"%c",&c);
@@ -146,7 +147,7 @@ int *inicia_vetor(FILE *fp, int tam, int maior, int *vetor){
 		else{
 			if(j<tam){
 				*(vetor+j)= atoi(num);
-				//printf("numero[%d]: %d\n",j, vetor[j]);
+	//			printf("numero[%d]: %d\n",j, vetor[j]);
 				j++;
 				
 				for(k=0; k<maior;k++)
@@ -157,7 +158,7 @@ int *inicia_vetor(FILE *fp, int tam, int maior, int *vetor){
 	
 	}
 
-	
+	fclose(fp);
 
 	return vetor;
 }
@@ -214,7 +215,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 		//printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM à direita\n");
+	//printf("\nMATRIX GLCM à direita\n");
 
 	//for(i=0;i<L;i++){
 		//for(j=0;j<L;j++){
@@ -236,11 +237,11 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 	*(metricas+1)= energia;
 	*(metricas+2)=homogeneidade;
 
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -282,7 +283,7 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 		//printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM à esquerda:\n");
+	//printf("\nMATRIX GLCM à esquerda:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -308,11 +309,11 @@ float *glcm(int *matriz, int l, int num_linhas, int num_colunas, float *metricas
 	*(metricas+4)= energia;
 	*(metricas+5)=homogeneidade;
 	
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -355,10 +356,10 @@ for(i=0;i<L;i++){
 			c_adj=0;
 			
 		}
-		printf("\n\n\n\n");
+		///printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM à para baixo:\n");
+	//printf("\nMATRIX GLCM à para baixo:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -383,11 +384,11 @@ for(i=0;i<L;i++){
 	*(metricas+7)= energia;
 	*(metricas+8)=homogeneidade;
 
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -434,7 +435,7 @@ for(i=0;i<L;i++){
 		//printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM à para cima:\n");
+	//printf("\nMATRIX GLCM à para cima:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -458,11 +459,11 @@ for(i=0;i<L;i++){
 	*(metricas+10)= energia;
 	*(metricas+11)=homogeneidade;
 	
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -508,10 +509,10 @@ for(i=0;i<L;i++){
 			c_adj=0;
 			
 		}
-		printf("\n\n\n\n");
+	//	printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM para diagonal direita inferior:\n");
+	//printf("\nMATRIX GLCM para diagonal direita inferior:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -535,11 +536,11 @@ for(i=0;i<L;i++){
 	*(metricas+13)= energia;
 	*(metricas+14)=homogeneidade;
 
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -585,10 +586,10 @@ for(i=0;i<L;i++){
 			c_adj=0;
 			
 		}
-		printf("\n\n\n\n");
+	//	printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM para diagonal esquerda superior:\n");
+	//printf("\nMATRIX GLCM para diagonal esquerda superior:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -612,11 +613,11 @@ for(i=0;i<L;i++){
 	*(metricas+16)= energia;
 	*(metricas+17)=homogeneidade;
 
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -661,10 +662,10 @@ for(i=0;i<L;i++){
 			c_adj=0;
 			
 		}
-		printf("\n\n\n\n");
+	//	printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM para diagonal esquerda inferior:\n");
+	//printf("\nMATRIX GLCM para diagonal esquerda inferior:\n");
 
 	//for(i=0;i<L;i++){
 	//	for(j=0;j<L;j++){
@@ -688,11 +689,11 @@ for(i=0;i<L;i++){
 	*(metricas+19)= energia;
 	*(metricas+20)=homogeneidade;
 
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
@@ -720,11 +721,11 @@ for(i=0;i<L;i++){
 							
 							c_adj+=1;
 						}
-					printf("Matrix de posição glcm: %d, %d \n", v_adj1, v_adj2);
-					printf("Matrix cinza da imagem: %d, %d \n", adj1, adj2);			
+	//				printf("Matrix de posição glcm: %d, %d \n", v_adj1, v_adj2);
+	//				printf("Matrix cinza da imagem: %d, %d \n", adj1, adj2);			
 					
-					printf("Valo da comparação:     %d\n", c_adj);
-					printf("\n\n\n");			
+	//				printf("Valo da comparação:     %d\n", c_adj);
+	//				printf("\n\n\n");			
 					}
 				a+=5;
 				b+=5;
@@ -740,14 +741,14 @@ for(i=0;i<L;i++){
 		//printf("\n\n\n\n");
 	}
 	
-	printf("\nMATRIX GLCM para diagonal direita superior:\n");
+	//printf("\nMATRIX GLCM para diagonal direita superior:\n");
 
-	for(i=0;i<L;i++){
-		for(j=0;j<L;j++){
-			printf("%d \t", mat_glcm_dds[i][j]);
-		}
-		printf("\n");
-	}	
+	//for(i=0;i<L;i++){
+	//	for(j=0;j<L;j++){
+	//		printf("%d \t", mat_glcm_dds[i][j]);
+	//	}
+	//	printf("\n");
+	//}	
 
 
 	for(i=0;i<L;i++){
@@ -763,11 +764,11 @@ for(i=0;i<L;i++){
 	*(metricas+22)= energia;
 	*(metricas+23)=homogeneidade;
 	
-	printf("%2f \n", contraste);
-	printf("%2f \n", energia);
-	printf("%2f \n", homogeneidade);
+	//printf("%2f \n", contraste);
+	//printf("%2f \n", energia);
+	//printf("%2f \n", homogeneidade);
 	
-	printf("\n\n");
+	//printf("\n\n");
 
 	contraste=0;
 	energia=0;
